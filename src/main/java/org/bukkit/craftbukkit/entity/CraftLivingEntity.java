@@ -144,7 +144,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
         return blocks;
     }
 
-    private List<Block> getLineOfSight(HashSet<Material> transparent, int maxDistance, int maxLength) {
+    private List<Block> getSightLine(HashSet<Material> transparent, int maxDistance, int maxLength) {
         if (maxDistance > 120) {
             maxDistance = 120;
         }
@@ -162,7 +162,7 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
                     break;
                 }
             } else {
-                if (!transparent.contains(material) {
+                if (!transparent.contains(material)) {
                     break;
                 }
             }
@@ -174,8 +174,8 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
         return getLineOfSight(transparent, maxDistance, 0);
     }
 
-    public List<Block> getLineOfSight(HashSet<Material> transparent, int maxDistance) {
-        return getLineOfSight(transparent, maxDistance, 0);
+    public List<Block> getSightLine(HashSet<Material> transparent, int maxDistance) {
+        return getSightLine(transparent, maxDistance, 0);
     }
 
     public Block getTargetBlock(HashSet<Byte> transparent, int maxDistance) {
@@ -183,8 +183,8 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
         return blocks.get(0);
     }
 
-    public Block getTargetBlock(HashSet<Material> transparent, int maxDistance) {
-        List<Block> blocks = getLineOfSight(transparent, maxDistance, 1);
+    public Block getTargetedBlock(HashSet<Material> transparent, int maxDistance) {
+        List<Block> blocks = getSightLine(transparent, maxDistance, 1);
         return blocks.get(0);
     }
 
@@ -192,8 +192,8 @@ public class CraftLivingEntity extends CraftEntity implements LivingEntity {
         return getLineOfSight(transparent, maxDistance, 2);
     }
 
-    public List<Block> getLastTwoTargetBlocks(HashSet<Material> transparent, int maxDistance) {
-        return getLineOfSight(transparent, maxDistance, 2);
+    public List<Block> getLastTwoTargetedBlocks(HashSet<Material> transparent, int maxDistance) {
+        return getSightLine(transparent, maxDistance, 2);
     }
 
     @Deprecated
