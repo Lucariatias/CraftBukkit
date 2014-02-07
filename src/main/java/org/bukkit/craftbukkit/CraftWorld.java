@@ -824,6 +824,10 @@ public class CraftWorld implements World {
         return spawnFallingBlock(location, org.bukkit.Material.getMaterial(blockId), blockData);
     }
 
+    public FallingBlock spawnFallingBlock(Location location, org.bukkit.Material material) throws IllegalArgumentException {
+        return spawnFallingBlock(location, material, (byte) 0);
+    }
+
     @SuppressWarnings("unchecked")
     public <T extends Entity> T spawn(Location location, Class<T> clazz, SpawnReason reason) throws IllegalArgumentException {
         if (location == null || clazz == null) {
